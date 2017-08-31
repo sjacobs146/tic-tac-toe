@@ -12,6 +12,8 @@ const onClickBox = function () {
   console.log(gameObj)
   const elem = $(this)
   console.log('id: ' + elem.attr('id'))
+  console.log('text: ' + elem.text())
+
   // determine which cell was Clicked
   switch (elem.attr('id')) {
     case 'cell1':
@@ -42,15 +44,18 @@ const onClickBox = function () {
       cellIndex = 9
       break
   }
-  if (!elem.attr('text')) {
+  // TODO: would like a better way to do this.  What is the value of text if empty?
+  if (elem.text() !== 'X' && elem.text() !== 'O') {
     elem.text(gameObj.currentPlayer)
     gameObj.cells[cellIndex] = gameObj.currentPlayer
-    if (gameObj.currentPlayer === 'X') {
-      gameObj.currentPlayer = 'O'
-    } else {
-      gameObj.currentPlayer = 'X'
-    }
-    //gameObj.togglePlayer()
+    // if (gameObj.currentPlayer === 'X') {
+    //   gameObj.currentPlayer = 'O'
+    // } else {
+    //   gameObj.currentPlayer = 'X'
+    // }
+    gameObj.togglePlayer()
+    console.log('Current Player: ' + gameObj.currentPlayer)
+    // check for winner
   } else {
     console.log('Cell already taken')
   }

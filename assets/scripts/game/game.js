@@ -8,7 +8,9 @@ const createGame = function () {
     player_x: '',
     player_o: '',
     currentPlayer: 'X',
-    togglePlayer: () => { this.currentPlayer === 'X' ? 'O' : 'X' }
+    togglePlayer: function () {
+      this.currentPlayer = (this.currentPlayer === 'X' ? 'O' : 'X')
+    }
   }
   return game
 }
