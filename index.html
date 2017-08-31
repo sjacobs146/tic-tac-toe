@@ -14,22 +14,23 @@
     <body class="container-fluid">
       <h1>Tic-Tac-Toe</h1>
       <h2>Game Board</h2>
-      <div class="container" id="game-board">
+      <button type="button" id="startGame" name="startGame" class="btn btn-primary">Start Game</button>
+      <div class="container board" id="game-board">
               <!-- Columns start at 50% wide on mobile and bump up to 33.3% 6wide on desktop -->
         <div class="row" id="row1">
-          <div class="col-xs-4 box">Cell 1</div>
-          <div class="col-xs-4 box v">Cell 2</div>
-          <div class="col-xs-4 box">Cell 3</div>
+          <div class="col-xs-4 box" id="cell1"></div>
+          <div class="col-xs-4 box v" id="cell2"></div>
+          <div class="col-xs-4 box" id="cell3"></div>
         </div>
         <div class="row" id="row2">
-          <div class="col-xs-4 box h">Cell 4</div>
-          <div class="col-xs-4 box v h">Cell 5</div>
-          <div class="col-xs-4 box h">Cell 6</div>
+          <div class="col-xs-4 box h" id="cell4"></div>
+          <div class="col-xs-4 box v h" id="cell5"></div>
+          <div class="col-xs-4 box h" id="cell6"></div>
         </div>
         <div class="row" id="row3">
-          <div class="col-xs-4 box h">Cell 7</div>
-          <div class="col-xs-4 box v h">Cell 8</div>
-          <div class="col-xs-4 box h">Cell 9</div>
+          <div class="col-xs-4 box h" id="cell7"></div>
+          <div class="col-xs-4 box v h" id="cell8"></div>
+          <div class="col-xs-4 box h" id="cell9"></div>
         </div>
       </div>
       <br>
