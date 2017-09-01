@@ -1,21 +1,15 @@
 'use strict'
 
-const createGame = function () {
-  const game = {
-    id: 0,
-    cells: ['', '', '', '', '', '', '', '', ''],
-    over: false,
-    player_x: '',
-    player_o: '',
-    currentPlayer: 'X',
-    togglePlayer: function () {
-      this.currentPlayer = (this.currentPlayer === 'X' ? 'O' : 'X')
-    }
-  }
-  return game
+const Game = function (id, cells, over, player_x, player_o) {
+  this.id = id
+  this.cells = cells
+  this.over = over
+  this.player_x = player_x
+  this.player_o = player_o
+  this.currentPlayer = 'X'
 }
 
-const checkForWinner = function (cells) {
+Game.prototype.checkForWinner = function () {
   // returns winning player (i.e. X or O) or false if no winner
   const winners = [[0, 4, 8], [2, 4, 6], [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
   let winner = false
@@ -23,7 +17,7 @@ const checkForWinner = function (cells) {
   for (let i = 0; i < winners.length; i++) {
     // if string = 'XXX' or 'OOO' then we have a winner
     const coords = winners[i]
-    const row = cells[coords[0]] + cells[coords[1]] + cells[coords[2]]
+    const row = this.cells[coords[0]] + this.cells[coords[1]] + this.cells[coords[2]]
     if (row === 'XXX') {
       winner = 'X'
     } else if (row === 'OOO') {
@@ -33,13 +27,13 @@ const checkForWinner = function (cells) {
   return winner
 }
 
-const checkForDraw = function (cells) {
+Game.prototype.checkForDraw = function () {
   // game is over when all cells are full
-  return cells.join('').length === 9
+  return this.cells.join('').length === 9
 }
 
-module.exports = {
-  createGame,
-  checkForWinner,
-  checkForDraw
+Game.prototype.togglePlayer = function () {
+  this.currentPlayer = (this.currentPlayer === 'X' ? 'O' : 'X')
 }
+
+module.exports = Game

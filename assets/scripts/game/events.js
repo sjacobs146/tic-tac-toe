@@ -1,46 +1,60 @@
 'use strict'
-const game = require('./game')
-let gameObj = null
+const api = require('./api')
+const ui = require('./ui')
+const Game = require('./game')
+const store = require('../store')
+
+let game = null
 
 const onClickBox = function (event) {
+  console.log('onClickBox')
   let cellIndex = 0
-  if (gameObj === null) {
-    console.log('gameObj = null')
-    gameObj = game.createGame()
+  if (game === null) {
+    console.log('game = null')
+    console.log(store.game)
+    game = new Game(store.game.id, store.game.cells, store.game.over, store.game.player_x, store.game.player_o)
   }
-  console.log(gameObj)
+  console.log(game)
   const elem = $(this)
   const targetId = elem.attr('id')
   cellIndex = targetId.substring(targetId.length - 1)
 
   // TODO: would like a better way to do this.
   if (elem.text() !== 'X' && elem.text() !== 'O') {
-    elem.text(gameObj.currentPlayer)
-    gameObj.cells[cellIndex] = gameObj.currentPlayer
+    elem.text(game.currentPlayer)
+    game.cells[cellIndex] = game.currentPlayer
     // check for winner
-    const winner = game.checkForWinner(gameObj.cells)
+    const winner = game.checkForWinner()
     if (winner) {
       console.log('Winner is player: ' + winner)
-      gameObj.over = true
+      game.over = true
+      game = null
     } else {
       // check for game over
-      game.over = game.checkForDraw(gameObj.cells)
+      game.over = game.checkForDraw(game.cells)
       if (game.over) {
         console.log('Game Over!')
+        game = null
       }
     }
-    gameObj.togglePlayer()
+    game.togglePlayer()
   } else {
     console.log('Cell already taken')
   }
 }
-// const onClickStart = function () {
-//   // console.log('Start Game')
-//   game = game.createGame()
-//   // change button text to restart game
-// }
+
+const onClickStart = function (event) {
+  event.preventDefault()
+  // clear game board
+  $('.box').text('')
+  console.log('Start Game')
+  api.createGame()
+    .then(ui.createSuccess)
+    .catch(ui.createFailure)
+}
+
 const addHandlers = function () {
-  // $('#startGame').on('click', console.log('Click Start'))
+  $('#start-game').on('submit', onClickStart)
   $('#cell0').on('click', onClickBox)
   $('#cell1').on('click', onClickBox)
   $('#cell2').on('click', onClickBox)
