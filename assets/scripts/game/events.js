@@ -10,41 +10,10 @@ const onClickBox = function (event) {
   }
   console.log(gameObj)
   const elem = $(this)
-  console.log('id: ' + elem.attr('id'))
-  console.log('text: ' + elem.text())
+  const targetId = elem.attr('id')
+  cellIndex = targetId.substring(targetId.length - 1)
 
-  // determine which cell was Clicked
-  // TODO: Would like to use event.currentTarget and put handler on the game-board instead
-  switch (elem.attr('id')) {
-    case 'cell1':
-      cellIndex = 0
-      break
-    case 'cell2':
-      cellIndex = 1
-      break
-    case 'cell3':
-      cellIndex = 2
-      break
-    case 'cell4':
-      cellIndex = 3
-      break
-    case 'cell5':
-      cellIndex = 4
-      break
-    case 'cell6':
-      cellIndex = 5
-      break
-    case 'cell7':
-      cellIndex = 6
-      break
-    case 'cell8':
-      cellIndex = 7
-      break
-    case 'cell9':
-      cellIndex = 8
-      break
-  }
-  // TODO: would like a better way to do this.  What is the value of text if empty?
+  // TODO: would like a better way to do this.
   if (elem.text() !== 'X' && elem.text() !== 'O') {
     elem.text(gameObj.currentPlayer)
     gameObj.cells[cellIndex] = gameObj.currentPlayer
@@ -56,10 +25,11 @@ const onClickBox = function (event) {
     } else {
       // check for game over
       game.over = game.checkForDraw(gameObj.cells)
-      console.log('Game Over: ' + game.over)
+      if (game.over) {
+        console.log('Game Over!')
+      }
     }
     gameObj.togglePlayer()
-    console.log('Current Player: ' + gameObj.currentPlayer)
   } else {
     console.log('Cell already taken')
   }
@@ -71,6 +41,7 @@ const onClickBox = function (event) {
 // }
 const addHandlers = function () {
   // $('#startGame').on('click', console.log('Click Start'))
+  $('#cell0').on('click', onClickBox)
   $('#cell1').on('click', onClickBox)
   $('#cell2').on('click', onClickBox)
   $('#cell3').on('click', onClickBox)
@@ -79,7 +50,6 @@ const addHandlers = function () {
   $('#cell6').on('click', onClickBox)
   $('#cell7').on('click', onClickBox)
   $('#cell8').on('click', onClickBox)
-  $('#cell9').on('click', onClickBox)
 }
 
 module.exports = {
