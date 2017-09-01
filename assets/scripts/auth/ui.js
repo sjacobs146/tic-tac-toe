@@ -20,9 +20,22 @@ const signInSuccess = function (data) {
 const signInFailure = function (error) {
   console.error(error)
 }
+
+const signOutSuccess = function () {
+  console.log('Successful sign out')
+  $('#message').text('Successful sign out')
+}
+
+const signOutFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error on sign out')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  signOutSuccess,
+  signOutFailure
 }
