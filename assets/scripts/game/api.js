@@ -14,6 +14,19 @@ const createGame = function () {
   })
 }
 
+const saveGame = function (data) {
+  console.log('saveGameAPI')
+  console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 module.exports = {
-  createGame
+  createGame,
+  saveGame
 }

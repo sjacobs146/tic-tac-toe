@@ -13,9 +13,8 @@
     </head>
     <body class="container-fluid">
       <h1>Tic-Tac-Toe</h1>
-      <h2>Game Board</h2>
       <p id='message'></p>
-      <form id="sign-out">
+      <form id="sign-out" hidden>
         <input type="submit" name="submit" class="btn btn-primary" value="Sign out">
       </form>
       <br>
@@ -41,7 +40,6 @@
         </div>
       </div>
       <br>
-      <h2>Sign Up</h2>
       <div class="container">
         <form id="sign-up">
           <div class="form-group">
@@ -52,11 +50,10 @@
               <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm Password">
               <input type="submit" name="submit" class="btn btn-primary" value="Sign Up">
             </fieldset>
-        </div>
+          </div>
         </form>
       </div>
       <br>
-      <h2>Sign In</h2>
       <div class="container">
         <form id="sign-in">
           <div class="form-group">
@@ -70,7 +67,6 @@
         </form>
       </div>
       <br>
-      <h2>Reset Password</h2>
       <div class="container">
         <form id="change-password">
           <div class="form-group">
@@ -84,5 +80,17 @@
         </form>
       </div>
       <br>
+      <div class="container">
+        <form id="game-stats">
+          <div class="form-group">
+            <fieldset>
+              <legend>Change your password</legend>
+              <input name="passwords[old]" type="password" class="form-control" placeholder="Old password">
+              <input name="passwords[new]" type="password" class="form-control" placeholder="New password">
+              <input type="submit" name="submit" class="btn btn-primary" value="Change Password">
+            </fieldset>
+        </div>
+        </form>
+      </div>
     </body>
 </html>

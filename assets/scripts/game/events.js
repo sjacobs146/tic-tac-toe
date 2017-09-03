@@ -7,40 +7,73 @@ const store = require('../store')
 let game = null
 
 const onClickBox = function (event) {
-  console.log('onClickBox')
+  event.preventDefault()
   let cellIndex = 0
-  if (game === null) {
-    console.log('game = null')
-    console.log(store.game)
-    game = new Game(store.game.id, store.game.cells, store.game.over, store.game.player_x, store.game.player_o)
-  }
-  console.log(game)
-  const elem = $(this)
-  const targetId = elem.attr('id')
-  cellIndex = targetId.substring(targetId.length - 1)
-
-  // TODO: would like a better way to do this.
-  if (elem.text() !== 'X' && elem.text() !== 'O') {
-    elem.text(game.currentPlayer)
-    game.cells[cellIndex] = game.currentPlayer
-    // check for winner
-    const winner = game.checkForWinner()
-    if (winner) {
-      console.log('Winner is player: ' + winner)
-      game.over = true
-      game = null
-    } else {
-      // check for game over
-      game.over = game.checkForDraw(game.cells)
-      if (game.over) {
-        console.log('Game Over!')
-        game = null
-      }
+  let gameOver = false
+  if (store.user !== undefined && store.user !== null) {
+    if (store.game === undefined || store.game === null || store.game.over) {
+      // TODO: Want to be able to start game w/o clicking Start Game button
+      $('#message').text('You must click on Start Game button to begin a new game.')
+      return
+      // async is biting my ass, need to wrap in a promise?
+      // createGame()
+      // console.log(store.game)
+      // game = new Game(store.game.id, store.game.cells, store.game.over, store.game.player_x, store.game.player_o)
     }
-    game.togglePlayer()
+    if (!game) {
+      game = new Game(store.game.id, store.game.cells, store.game.over, store.game.player_x, store.game.player_o)
+    }
+    const elem = $(this)
+    const targetId = elem.attr('id')
+    cellIndex = targetId.substring(targetId.length - 1)
+
+    // TODO: would like a better way to do this to support alternate tokens.
+    if (elem.text() !== 'X' && elem.text() !== 'O') {
+      elem.text(game.currentPlayer)
+      game.cells[cellIndex] = game.currentPlayer
+      // check for winner
+      const winner = game.checkForWinner()
+      if (winner) {
+        console.log('Winner, winner, chicken dinner')
+        $('#message').text('Game over, winner is player: ' + winner)
+        gameOver = true
+      } else {
+        // check for game over
+        if (game.checkForDraw(game.cells)) {
+          $('#message').text('It is a draw! Game over, try again')
+          gameOver = true
+        }
+      }
+      // store current state of game
+      saveGame(cellIndex, game.currentPlayer, gameOver)
+      if (gameOver) {
+        game = null
+      } else {
+        game.togglePlayer()
+      }
+    } else {
+      console.log('Cell already taken')
+    }
   } else {
-    console.log('Cell already taken')
+    console.log('User not signed in')
+    $('#message').text('You must sign in to play the game.')
   }
+}
+
+const saveGame = function (index, value, over) {
+  console.log('Save Game')
+  const data = {
+    game: {
+      cell: {
+        index: index,
+        value: value
+      },
+      over: over
+    }
+  }
+  api.saveGame(data)
+    .then(ui.saveSuccess)
+    .catch(ui.saveFailure)
 }
 
 const onClickStart = function (event) {

@@ -15,6 +15,8 @@ const signInSuccess = function (data) {
   console.log('Successful sign-in')
   $('#message').text('Successful sign in!')
   store.user = data.user
+  $('#sign-out').show()
+  $('#sign-in').hide()
 }
 
 const signInFailure = function (error) {
@@ -23,7 +25,9 @@ const signInFailure = function (error) {
 
 const signOutSuccess = function () {
   console.log('Successful sign out')
+  store.user = null
   $('#message').text('Successful sign out')
+  $('#sign-in').show()
 }
 
 const signOutFailure = function (error) {
