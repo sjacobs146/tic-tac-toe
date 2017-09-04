@@ -3,7 +3,6 @@ const config = require('./../config')
 const store = require('../store')
 
 const createGame = function () {
-  console.log('createGameAPI')
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'POST',
@@ -15,8 +14,6 @@ const createGame = function () {
 }
 
 const saveGame = function (data) {
-  console.log('saveGameAPI')
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -26,7 +23,18 @@ const saveGame = function (data) {
     data
   })
 }
+
+const getCompletedGames = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 module.exports = {
   createGame,
-  saveGame
+  saveGame,
+  getCompletedGames
 }

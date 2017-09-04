@@ -64,7 +64,7 @@
               <input type="submit" name="submit" class="btn btn-primary" value="Sign In">
             </fieldset>
         </div>
-        </form>
+      </form>
       </div>
       <br>
       <div class="container">
@@ -84,13 +84,14 @@
         <form id="game-stats">
           <div class="form-group">
             <fieldset>
-              <legend>Change your password</legend>
-              <input name="passwords[old]" type="password" class="form-control" placeholder="Old password">
-              <input name="passwords[new]" type="password" class="form-control" placeholder="New password">
-              <input type="submit" name="submit" class="btn btn-primary" value="Change Password">
+              <legend>Total Games Won</legend>
+              <input type="submit" name="submit" class="btn btn-primary" value="Get Total Games Won">
             </fieldset>
+            <div class="col-xs-4">Total Games Won:</div>
+            <div class="col-xs-4" id="games-won"></div>
         </div>
         </form>
+
       </div>
     </body>
 </html>

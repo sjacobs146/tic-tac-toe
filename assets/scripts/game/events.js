@@ -8,7 +8,9 @@ let game = null
 
 const onClickBox = function (event) {
   event.preventDefault()
-  let cellIndex = 0
+  const elem = $(this)
+  const targetId = elem.attr('id')
+  const cellIndex = targetId.substring(targetId.length - 1)
   let gameOver = false
   if (store.user !== undefined && store.user !== null) {
     if (store.game === undefined || store.game === null || store.game.over) {
@@ -23,9 +25,6 @@ const onClickBox = function (event) {
     if (!game) {
       game = new Game(store.game.id, store.game.cells, store.game.over, store.game.player_x, store.game.player_o)
     }
-    const elem = $(this)
-    const targetId = elem.attr('id')
-    cellIndex = targetId.substring(targetId.length - 1)
 
     // TODO: would like a better way to do this to support alternate tokens.
     if (elem.text() !== 'X' && elem.text() !== 'O') {
@@ -34,8 +33,7 @@ const onClickBox = function (event) {
       // check for winner
       const winner = game.checkForWinner()
       if (winner) {
-        console.log('Winner, winner, chicken dinner')
-        $('#message').text('Game over, winner is player: ' + winner)
+        $('#message').text('Game over, Winner, winner, chicken dinner! Winner is player: ' + winner)
         gameOver = true
       } else {
         // check for game over
@@ -52,10 +50,9 @@ const onClickBox = function (event) {
         game.togglePlayer()
       }
     } else {
-      console.log('Cell already taken')
+      $('#message').text('The box you selected is already taken.')
     }
   } else {
-    console.log('User not signed in')
     $('#message').text('You must sign in to play the game.')
   }
 }
@@ -86,7 +83,16 @@ const onClickStart = function (event) {
     .catch(ui.createFailure)
 }
 
+const onGetTotalWins = function (event) {
+  event.preventDefault()
+  api.getCompletedGames()
+    .then(ui.completedSuccess)
+    .catch(ui.completedFailure)
+  console.log('return from getCompletedGames')
+  console.log(store.games)
+}
 const addHandlers = function () {
+  $('#game-stats').on('submit', onGetTotalWins)
   $('#start-game').on('submit', onClickStart)
   $('#cell0').on('click', onClickBox)
   $('#cell1').on('click', onClickBox)
