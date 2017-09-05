@@ -4,23 +4,24 @@
 Shall we play a game?
 
 # Technologies Used
-HTML5
-CSS
-JavaScript
-jQuery
-AJAX
-Bootstrap
+- HTML5
+- CSS
+- JavaScript
+- jQuery
+- Bootstrap
+- AJAX
+- REST
 
-# Document Planning
+# My Planning process
 I began my planning by reading the project requirements, and creating wireframes.
-Then I created some user stories, and an agile board to represent the tasks that
+Then I created some user stories, and an [agile board](https://trello.com/b/Pia8Ti4W/game-project) to represent the tasks that
 needed to be accomplished.  I also spent some time designing my application. I
 defined the entities needed, and came up with a general approach to how I'd
 structure the game board, store the information about the game, and determine
 whether there was a winner or not.
 
-# Tell a story about your development process and problem-solving strategy
-My development process
+# My development process and problem-solving strategy
+## My development process
 After my planning was finished, I created a first stab at the UI with everything
 on the page at once.  Then I began developing the game logic without involving
 any apis.  I didn't think too much about writing the most elegant code at this
@@ -40,7 +41,7 @@ committed my code each time I had a small piece working the way I wanted it to.
 I typically do not commit code that is not working and tested.  Once a feature
 was completed, I merged the feature branch to master, and deployed it to GitHub.
 
-My problem-solving strategy
+## My problem-solving strategy
 I regularly make use of console.log to ensure that events are being fired and
 functions are being called when they are expected to.  I also use console.log
 to see what the data looks like along the way.  I always have the developer
@@ -51,3 +52,9 @@ may look for typos, review documentation, ask a colleague, Google, etc.
 # Unsolved Problems
 
 # Links to Wireframes and User Stories
+## Wireframes
+<img alt="Wireframe 1"  src="https://imgur.com/G0yGqeR">
+<img alt="Wireframe 2"  src="https://imgur.com/VrWsKJk">
+
+## User Stories
+https://trello.com/b/GtErbYEs/tic-tac-toe-user-stories
