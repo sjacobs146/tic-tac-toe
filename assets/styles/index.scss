@@ -3,13 +3,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $border: #000;
 
+.body {
+  padding-top: 70px;
+}
+
 .board {
   height: 450px;
   width: 450px;
 }
 
 .box {
+  font-size: 100px;
   height: 150px;
+  text-align: center;
   width: 150px;
 }
 
@@ -21,4 +27,8 @@ $border: #000;
 .h {
   border-bottom: 1px solid border;
   border-top: 1px solid $border;
+}
+
+.message {
+  font-size: 24px;
 }

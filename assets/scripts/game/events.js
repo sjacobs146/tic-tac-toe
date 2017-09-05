@@ -58,7 +58,6 @@ const onClickBox = function (event) {
 }
 
 const saveGame = function (index, value, over) {
-  console.log('Save Game')
   const data = {
     game: {
       cell: {
@@ -77,7 +76,6 @@ const onClickStart = function (event) {
   event.preventDefault()
   // clear game board
   $('.box').text('')
-  console.log('Start Game')
   api.createGame()
     .then(ui.createSuccess)
     .catch(ui.createFailure)
@@ -88,21 +86,19 @@ const onGetTotalWins = function (event) {
   api.getCompletedGames()
     .then(ui.completedSuccess)
     .catch(ui.completedFailure)
-  console.log('return from getCompletedGames')
-  console.log(store.games)
 }
+
+const onShowCollapsed = function () {
+  // when a collapsed div is shown hide all other collapsible divs that are visible
+  $('.main-container.collapse').not($(this)).collapse('hide')
+  $('#message').text('')
+}
+
 const addHandlers = function () {
+  $('.main-container.collapse').on('shown.bs.collapse', onShowCollapsed)
   $('#game-stats').on('submit', onGetTotalWins)
   $('#start-game').on('submit', onClickStart)
-  $('#cell0').on('click', onClickBox)
-  $('#cell1').on('click', onClickBox)
-  $('#cell2').on('click', onClickBox)
-  $('#cell3').on('click', onClickBox)
-  $('#cell4').on('click', onClickBox)
-  $('#cell5').on('click', onClickBox)
-  $('#cell6').on('click', onClickBox)
-  $('#cell7').on('click', onClickBox)
-  $('#cell8').on('click', onClickBox)
+  $('.box').on('click', onClickBox)
 }
 
 module.exports = {

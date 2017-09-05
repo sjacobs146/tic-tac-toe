@@ -5,7 +5,6 @@ const Game = require('./game')
 
 const createSuccess = function (data) {
   store.game = data.game
-  console.log(store.game)
   $('#message').text('Game created')
   $('#start-btn').text('Reset Game')
 }
@@ -15,8 +14,6 @@ const createFailure = function (error) {
 }
 
 const saveSuccess = function (data) {
-  console.log('Save game successful')
-  console.log(data)
   store.game = data.game
 }
 
