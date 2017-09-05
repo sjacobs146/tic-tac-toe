@@ -27,15 +27,12 @@
             <li class="active" id="signInMenuItem"><a href="#signIn" data-toggle="collapse">Sign In</a></li>
             <li class="hidden signedIn" id="playMenuItem"><a href="#game-board" data-toggle="collapse">Play</a></li>
             <li id="signUpMenuItem"><a href="#signUp" data-toggle="collapse">Sign Up</a></li>
-            <li class="hidden signedIn"  id="signOutMenuItem"><a href="#">Sign Out</a></li>
             <li class="hidden signedIn" id="changePasswordMenuItem"><a href="#chgPwd" data-toggle="collapse">Change Password</a></li>
             <li class="hidden signedIn" id="gameStatsMenuItem"><a href="#gameStats" data-toggle="collapse">Game Stats</a></li>
           </ul>
-          <form class="navbar-form navbar-right hidden signedIn">
-            <div class="input-group">
-              <input type="submit" name="submit" class="btn btn-primary" id="sign-out" value="Sign out">
-            </div>
-          </form>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="hidden signedIn"><button type=button class="btn btn-primary" id="sign-out">Sign Out</button></li>
+          </ul>
         </div>
       </nav>
       <div class="container">
@@ -58,9 +55,7 @@
       </div>
       <div class="container board collapse main-container" id="game-board">
         <div class="col-xs-12">
-          <form id="start-game">
-            <input type="submit" name="submit" class="btn btn-primary" id="start-btn" value="Start Game">
-          </form>
+          <button type="button" class="btn btn-primary" id="start-btn">Start Game</button>
         </div>
         <!-- Columns start at 50% wide on mobile and bump up to 33.3% 6wide on desktop -->
         <div class="row" id="row0">

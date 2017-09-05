@@ -40,7 +40,7 @@ const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', console.log('sign-out'))
+  $('#sign-out').on('click', onSignOut)
   $('#signOutMenuItem').on('click', console.log('signOutMenuItem'))
 }
 

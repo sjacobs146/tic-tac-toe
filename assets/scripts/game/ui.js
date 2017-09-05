@@ -5,6 +5,8 @@ const Game = require('./game')
 
 const createSuccess = function (data) {
   store.game = data.game
+  // clear game board
+  $('.box').text('')
   $('#message').text('Game created')
   $('#start-btn').text('Reset Game')
 }

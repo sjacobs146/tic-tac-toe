@@ -74,8 +74,7 @@ const saveGame = function (index, value, over) {
 
 const onClickStart = function (event) {
   event.preventDefault()
-  // clear game board
-  $('.box').text('')
+  console.log('onClickStart')
   api.createGame()
     .then(ui.createSuccess)
     .catch(ui.createFailure)
@@ -97,7 +96,7 @@ const onShowCollapsed = function () {
 const addHandlers = function () {
   $('.main-container.collapse').on('shown.bs.collapse', onShowCollapsed)
   $('#game-stats').on('submit', onGetTotalWins)
-  $('#start-game').on('submit', onClickStart)
+  $('#start-btn').on('click', onClickStart)
   $('.box').on('click', onClickBox)
 }
 
