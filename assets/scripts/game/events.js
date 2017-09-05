@@ -12,6 +12,7 @@ const onClickBox = function (event) {
   const targetId = elem.attr('id')
   const cellIndex = targetId.substring(targetId.length - 1)
   let gameOver = false
+  $('#message').text('')
   if (store.user !== undefined && store.user !== null) {
     if (store.game === undefined || store.game === null || store.game.over) {
       // TODO: Want to be able to start game w/o clicking Start Game button
@@ -93,7 +94,13 @@ const onShowCollapsed = function () {
   $('#message').text('')
 }
 
+const onNavClick = function () {
+  $('.nav').find('.active').removeClass('active')
+  $(this).parent().addClass('active')
+}
+
 const addHandlers = function () {
+  $('.nav a').on('click', onNavClick)
   $('.main-container.collapse').on('shown.bs.collapse', onShowCollapsed)
   $('#game-stats').on('submit', onGetTotalWins)
   $('#start-btn').on('click', onClickStart)

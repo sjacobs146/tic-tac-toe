@@ -4,11 +4,10 @@ const store = require('../store')
 
 const signUpSuccess = function (data) {
   $('#message').text('Successful signup')
-  $('.navbar-text').text('Signed in as: ' + store.user.id)
 }
 
 const signUpFailure = function (error) {
-  $('#message').text('Successful sign up failed!')
+  $('#message').text('Sign up failed!')
   console.error(error)
 }
 
@@ -18,6 +17,7 @@ const signInSuccess = function (data) {
   $('#signIn').collapse('hide')
   $('#signInMenuItem').addClass('hidden')
   $('.signedIn').removeClass('hidden')
+  $('#game-board').collapse('show')
 }
 
 const signInFailure = function (error) {
@@ -31,7 +31,8 @@ const signOutSuccess = function () {
   $('#message').text('Successful sign out')
   $('.signedIn').addClass('hidden')
   $('#signInMenuItem').removeClass('hidden')
-  $('#sign-in').show()
+  $('#signInMenuItem').addClass('active')
+  $('#signIn').collapse('show')
 }
 
 const signOutFailure = function (error) {
