@@ -8,7 +8,6 @@ const signUpSuccess = function (data) {
 
 const signUpFailure = function (error) {
   $('#message').text('Sign up failed!')
-  console.error(error)
 }
 
 const signInSuccess = function (data) {
@@ -21,7 +20,6 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (error) {
-  console.error(error)
   $('#message').text('Invalid email address or password, please try again')
 }
 
@@ -36,7 +34,6 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function (error) {
-  console.error(error)
   $('#message').text('Error on sign out')
 }
 
@@ -45,7 +42,6 @@ const changePasswordSuccess = function () {
 }
 
 const changePasswordFailure = function (error) {
-  console.error(error)
   $('#message').text('Error on change password')
 }
 

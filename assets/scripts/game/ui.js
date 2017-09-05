@@ -12,7 +12,7 @@ const createSuccess = function (data) {
 }
 
 const createFailure = function (error) {
-  console.error(error)
+  $('#message').text('Error creating game')
 }
 
 const saveSuccess = function (data) {
@@ -20,7 +20,7 @@ const saveSuccess = function (data) {
 }
 
 const saveFailure = function (error) {
-  console.error(error)
+  $('#message').text('Error saving game')
 }
 
 const completedSuccess = function (data) {
@@ -36,7 +36,7 @@ const completedSuccess = function (data) {
 }
 
 const completedFailure = function (error) {
-  console.error(error)
+  $('#message').text('Error calculating games stats')
 }
 
 module.exports = {
