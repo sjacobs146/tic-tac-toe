@@ -15,6 +15,7 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#signIn').collapse('hide')
   $('#signInMenuItem').addClass('hidden')
+  $('#signUpMenuItem').addClass('hidden')
   $('.signedIn').removeClass('hidden')
   $('#game-board').collapse('show')
 }
@@ -29,6 +30,7 @@ const signOutSuccess = function () {
   $('.signedIn').addClass('hidden')
   $('#signInMenuItem').removeClass('hidden')
   $('#signInMenuItem').addClass('active')
+  $('#signUpMenuItem').removeClass('hidden')
   $('#signIn').collapse('show')
 }
 
