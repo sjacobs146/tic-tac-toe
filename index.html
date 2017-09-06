@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">Tic-Tac-Toe</a>
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active nav-link" id="signInMenuItem"><a href="#signIn" data-toggle="collapse">Sign In</a></li>
+            <li class="hidden nav-link signedIn" id="playMenuItem"><a href="#game-board" data-toggle="collapse">Play</a></li>
+            <li class="nav-link" id="signUpMenuItem"><a href="#signUp" data-toggle="collapse">Sign Up</a></li>
+            <li class="hidden nav-link signedIn" id="changePasswordMenuItem"><a href="#chgPwd" data-toggle="collapse">Change Password</a></li>
+            <li class="hidden nav-link signedIn" id="gameStatsMenuItem"><a href="#gameStats" data-toggle="collapse">Game Stats</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="hidden signedIn"><button type=button class="btn btn-primary" id="sign-out">Sign Out</button></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <p class='message' id=message></p>
+      </div>
+      <div class="container collapse in main-container" id="signIn">
+        <form id="sign-in">
+          <div class="form-group">
+            <fieldset>
+              <legend>Sign in to your account to play</legend>
+              <input name="credentials[email]" type="text" class="form-control" placeholder="Email">
+              <input name="credentials[password]" type="password" class="form-control" placeholder="Password">
+              <input type="submit" name="submit" class="btn btn-primary" value="Sign In">
+            </fieldset>
+          </div>
+        </form>
+        <!-- <form class="navbar-form navbar-right" id="sign-out" hidden>
+          <input type="submit" name="submit" class="btn btn-primary" value="Sign out">
+        </form> -->
+      </div>
+      <div class="container board collapse main-container" id="game-board">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-primary" id="start-btn">Start Game</button>
+        </div>
+        <!-- Columns start at 50% wide on mobile and bump up to 33.3% 6wide on desktop -->
+        <div class="row" id="row0">
+          <div class="col-xs-4 box" id="cell0"></div>
+          <div class="col-xs-4 box v" id="cell1"></div>
+          <div class="col-xs-4 box" id="cell2"></div>
+        </div>
+        <div class="row" id="row2">
+          <div class="col-xs-4 box h" id="cell3"></div>
+          <div class="col-xs-4 box v h" id="cell4"></div>
+          <div class="col-xs-4 box h" id="cell5"></div>
+        </div>
+        <div class="row" id="row3">
+          <div class="col-xs-4 box h" id="cell6"></div>
+          <div class="col-xs-4 box v h" id="cell7"></div>
+          <div class="col-xs-4 box h" id="cell8"></div>
+        </div>
+      </div>
+      <br>
+      <div class="container collapse main-container" id="signUp">
+        <form id="sign-up">
+          <div class="form-group">
+            <fieldset>
+              <legend>Sign up for an account, your email address serves as your user name</legend>
+              <input name="credentials[email]" type="text" class="form-control" placeholder="Email">
+              <input name="credentials[password]" type="password" class="form-control" placeholder="Password">
+              <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm Password">
+              <input type="submit" name="submit" class="btn btn-primary" value="Sign Up">
+            </fieldset>
+          </div>
+        </form>
+      </div>
+      <br>
+      <div class="container collapse main-container" id="chgPwd">
+        <form id="change-password">
+          <div class="form-group">
+            <fieldset>
+              <legend>Change your password</legend>
+              <input name="passwords[old]" type="password" class="form-control" placeholder="Old password">
+              <input name="passwords[new]" type="password" class="form-control" placeholder="New password">
+              <input type="submit" name="submit" class="btn btn-primary" value="Change Password">
+            </fieldset>
+        </div>
+        </form>
+      </div>
+      <br>
+      <div class="container collapse main-container" id="gameStats">
+        <form id="game-stats">
+          <div class="form-group">
+            <fieldset>
+              <legend>Total Games Won</legend>
+              <input type="submit" name="submit" class="btn btn-primary" value="Get Total Games Won">
+            </fieldset>
+            <div class="col-xs-4">Total Games Won:</div>
+            <div class="col-xs-4" id="games-won"></div>
+        </div>
+        </form>
+      </div>
+    </body>
+</html>
