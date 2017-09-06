@@ -3,6 +3,10 @@
 
 Shall we play a game?
 
+[Imgur](https://i.imgur.com/NIcKSAc.jpg)
+
+[Click Here for demo](https://sjacobs146.github.io/tic-tac-toe/index.html)
+
 # Technologies Used
 - HTML5
 - CSS
@@ -50,11 +54,17 @@ will take different approaches depending upon the behaviour I'm observing. I
 may look for typos, review documentation, ask a colleague, Google, etc.
 
 # Unsolved Problems
+- I would like to be able to start a game without clicking on the Start Game
+button.  I had some issues with promises...
+
+- The "active" state is not set correctly on the navigation bar when the game
+board is displayed after sign in.
 
 # Links to Wireframes and User Stories
 ## Wireframes
-<img alt="Wireframe 1"  src="https://imgur.com/G0yGqeR">
-<img alt="Wireframe 2"  src="https://imgur.com/VrWsKJk">
+![Wireframe 1](https://imgur.com/G0yGqeR)
+![Wireframe 2](https://imgur.com/VrWsKJk)
+My initial wireframes were fairly ambitious...
 
 ## User Stories
 https://trello.com/b/GtErbYEs/tic-tac-toe-user-stories

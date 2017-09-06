@@ -75,7 +75,6 @@ const saveGame = function (index, value, over) {
 
 const onClickStart = function (event) {
   event.preventDefault()
-  console.log('onClickStart')
   api.createGame()
     .then(ui.createSuccess)
     .catch(ui.createFailure)

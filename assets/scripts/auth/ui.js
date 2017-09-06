@@ -25,7 +25,6 @@ const signInFailure = function (error) {
 
 const signOutSuccess = function () {
   store.user = null
-  console.log('signOutSuccess')
   $('#message').text('Successful sign out')
   $('.signedIn').addClass('hidden')
   $('#signInMenuItem').removeClass('hidden')
