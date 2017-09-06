@@ -3,8 +3,6 @@
 
 Shall we play a game?
 
-![Hang In THere](/docs/images/HangInThere.jpg)
-
 [Click Here for demo](https://sjacobs146.github.io/tic-tac-toe/index.html)
 
 # Technologies Used
@@ -62,9 +60,13 @@ board is displayed after sign in.
 
 # Links to Wireframes and User Stories
 ## Wireframes
-![Wireframe 1](https://imgur.com/G0yGqeR)
-![Wireframe 2](https://imgur.com/VrWsKJk)
+![Wireframe 1](/docs/images/Wireframe_1.jpg)
+![Wireframe 2](/docs/images/Wireframe_2.jpg)
+
 My initial wireframes were fairly ambitious...
 
 ## User Stories
 https://trello.com/b/GtErbYEs/tic-tac-toe-user-stories
+
+## A Message for my colleagues
+![Hang In THere](/docs/images/HangInThere.jpg)
