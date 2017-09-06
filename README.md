@@ -3,7 +3,7 @@
 
 Shall we play a game?
 
-[Imgur](https://i.imgur.com/NIcKSAc.jpg)
+![Hang In THere](/docs/images/HangInThere.jpg)
 
 [Click Here for demo](https://sjacobs146.github.io/tic-tac-toe/index.html)
 
